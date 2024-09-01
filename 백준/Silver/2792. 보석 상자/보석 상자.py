@@ -1,29 +1,21 @@
-import sys
-input=sys.stdin.readline
 n, m = map(int, input().split())
-colors = []
+data = []
 
 for _ in range(m) :
-    colors.append(int(input()))
-    
-start = 1
-end = max(colors)
-result = 0
+    data.append(int(input()))
+
+start = 1; end = max(data)
+
 while start <= end :
     middle = (start + end) // 2
-    
     cnt = 0
-    
-    for color in colors :
-        cnt += color // middle
-        if color % middle != 0 :
-            cnt += 1
-    
-    if cnt <= n :
-        end = middle - 1
-        result = middle
-    else :
+    for jewel in data :
+        cnt += (jewel // middle)
+        cnt += 1 if jewel % middle != 0 else 0
+
+    if cnt > n :
         start = middle + 1
-        
-print(result)
-    
+    else :
+        end = middle - 1
+
+print(end + 1)
