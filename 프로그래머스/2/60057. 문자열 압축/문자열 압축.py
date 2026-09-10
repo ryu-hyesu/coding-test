@@ -6,7 +6,7 @@ def solution(s):
         comp = ''
         cnt = 1
         
-        for i in range(0, len(s), x) :
+        for i in range(0, len(s) + x, x) :
             temp = s[i:i+x]
             if comp == temp : cnt += 1
             elif comp != temp :
@@ -15,7 +15,7 @@ def solution(s):
                 comp = temp
                 cnt = 1
         
-        comp_len += len(comp) + (len(str(cnt)) if cnt > 1 else 0)
+        # comp_len += len(comp) + (len(str(cnt)) if cnt > 1 else 0)
         answer = min(answer, comp_len)
             
     return answer
